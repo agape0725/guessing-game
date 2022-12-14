@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <div class="main__container">
+      <div class="main__content">
+        <h1>Guess the Number!</h1>
+
+        <div id="guess"></div>
+        <img src="../images/question-mark.png" alt="" class="question-mark-image">
+        <div id="clue"></div>
+
+        <div class="submit_score_flex">
+          <div class="guess-flex">
+            <div>
+              <input id="input-guess" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="3"/>
+            </div>
+
+            <div>
+              <button id="submit" class="button">Confirm!</button>
+            </div>
+          </div>
+
+          <div class="guess-content">
+            <p>You can start guessing...</p>
+
+            <div class="scoreboard">
+              <p id="score">Attempts: <span id="score-left"></span></p>
+              <p id="highscore">Highscore: <span id="final-score">5</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="intro-guess">
+      <p id="error-intro-guess">Choose number from (5-100).</p>
+      <input type="text" id="user-number" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="3"/>
+      <button id="start-button" class="button">Submit</button>
+    </div>
+
+    <div class="try-again">
+      <p class="try">You lose, Try again?</p>
+      <button id="try-again-button" class="button">Okay.</button>
+    </div>
+
+    
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>
