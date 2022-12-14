@@ -17,6 +17,8 @@ let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", function (e) {
   guess.textContent = Math.trunc(Math.random() * parseInt(userNumber.value)) + 1;
 
+  
+
   if (userNumber.value >= 101) {
     error.textContent = 'Maximum is 100.'
     return false;
@@ -32,22 +34,26 @@ startButton.addEventListener("click", function (e) {
     return false;
   } 
   
-  
-
   document.querySelector('.main__content').classList.add('show');
   document.querySelector('.intro-guess').classList.add('hide');
 
-    if (userNumber.value <= 20 && userNumber.value >= 1) {
-      scoreLeft.textContent = 5;
-    } else if (userNumber.value <= 40 && userNumber.value >= 19) {
-      scoreLeft.textContent = 10;
-    } else if (userNumber.value <= 60 && userNumber.value >= 39) {
-      scoreLeft.textContent = 15;
-    } else if (userNumber.value <= 80 && userNumber.value >= 59) {
-      scoreLeft.textContent = 20;
-    } else if (userNumber.value <= 100 && userNumber.value >= 79) {
-      scoreLeft.textContent = 25;
-    } 
+    // if (userNumber.value <= 20 && userNumber.value >= 1) {
+    //   scoreLeft.textContent = 5;
+    // } else if (userNumber.value <= 40 && userNumber.value >= 19) {
+    //   scoreLeft.textContent = 10;
+    // } else if (userNumber.value <= 60 && userNumber.value >= 39) {
+    //   scoreLeft.textContent = 15;
+    // } else if (userNumber.value <= 80 && userNumber.value >= 59) {
+    //   scoreLeft.textContent = 20;
+    // } else if (userNumber.value <= 100 && userNumber.value >= 79) {
+    //   scoreLeft.textContent = 25;
+    // } 
+
+    if (userNumber.value <= 50 && userNumber.value >= 1) {
+      scoreLeft.textContent = 6;
+    } else if (userNumber.value <= 100 && userNumber.value >= 49) {
+      scoreLeft.textContent = 12;
+    }
 
 })
 
@@ -56,7 +62,7 @@ submitButton.addEventListener("click", function (e) {
   let ans = parseInt(guess.textContent);
   let parseScoreLeft = parseInt(scoreLeft.textContent);
   let highScore = parseInt(finalScore.textContent);
-
+  
   if (parseScoreLeft === 1) {
 
     document.querySelector('.try-again').classList.add('show');
@@ -94,9 +100,11 @@ submitButton.addEventListener("click", function (e) {
       guess.classList.add('show');
       questionImage.classList.add('hide');
       clue.textContent = 'You guessed it right!'
+      clue.style.color = 'black';
       highScore > scoreLeft.textContent ? scoreLeft.textContent = scoreLeft.textContent : finalScore.textContent = scoreLeft.textContent;
       document.querySelector('.main__container').classList.add('blurred');
       document.querySelector('.try-again').classList.add('show');
+      document.querySelector('body').classList.add('win');
       tryAgain.textContent = `Congratulations! The answer was ${ans}. Try again?`;
       return true;
     }
@@ -108,14 +116,15 @@ tryAgainButton.addEventListener('click', function () {
   questionImage.classList.remove('hide');
   document.querySelector('.main__container').classList.remove('blurred');
   document.querySelector('.main__content').classList.remove('show');
-  
+  document.querySelector('body').classList.remove('win');
+  clue.style.color = 'white';
+
 
   document.querySelector('.intro-guess').classList.remove('hide');
   document.querySelector('.try-again').classList.remove('show');
   inputGuess.value = '';
   userNumber.value = '';
   clue.textContent = '';
-
 })
 
 
