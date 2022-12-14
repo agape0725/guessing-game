@@ -66,7 +66,6 @@ submitButton.addEventListener("click", function (e) {
     if (inputGuess.value === '') {
       clue.textContent = 'Enter guess.';
       clue.classList.add('show');
-      scoreLeft.textContent = parseScoreLeft -= 1;
 
       questionImage.classList.toggle('shake');
       return false;
@@ -76,6 +75,7 @@ submitButton.addEventListener("click", function (e) {
       clue.classList.add('show');
       clue.textContent = 'Too low.';
       scoreLeft.textContent = parseScoreLeft -= 1;
+      inputGuess.value = '';
 
       questionImage.classList.toggle('shake');
       return false;
@@ -85,6 +85,7 @@ submitButton.addEventListener("click", function (e) {
       clue.classList.add('show');
       clue.textContent = 'Too high.';
       scoreLeft.textContent = parseScoreLeft -= 1;
+      inputGuess.value = '';
 
       questionImage.classList.toggle('shake');
       return false;
@@ -99,8 +100,6 @@ submitButton.addEventListener("click", function (e) {
       tryAgain.textContent = `Congratulations! The answer was ${ans}. Try again?`;
       return true;
     }
-    
-
 });
 
 tryAgainButton.addEventListener('click', function () {
