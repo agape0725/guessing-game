@@ -19,13 +19,13 @@ startButton.addEventListener("click", function (e) {
 
   
 
-  if (userNumber.value >= 101) {
-    error.textContent = 'Maximum is 100.'
+  if (userNumber.value >= 11) {
+    error.textContent = 'Maximum is 10.'
     return false;
   }
 
-  if (userNumber.value <= 4) {
-    error.textContent = 'Minimum is 5'
+  if (userNumber.value <= 0) {
+    error.textContent = 'Minimum is 1'
     return false;
   }
 
@@ -49,10 +49,14 @@ startButton.addEventListener("click", function (e) {
     //   scoreLeft.textContent = 25;
     // } 
 
-    if (userNumber.value <= 50 && userNumber.value >= 1) {
-      scoreLeft.textContent = 6;
-    } else if (userNumber.value <= 100 && userNumber.value >= 49) {
-      scoreLeft.textContent = 12;
+    // if (userNumber.value <= 50 && userNumber.value >= 1) {
+    //   scoreLeft.textContent = 6;
+    // } else if (userNumber.value <= 100 && userNumber.value >= 49) {
+    //   scoreLeft.textContent = 12;
+    // }
+
+    if (userNumber.value <= 10 && userNumber.value >= 0) {
+      scoreLeft.textContent = 4;
     }
 
 })
@@ -66,6 +70,7 @@ submitButton.addEventListener("click", function (e) {
   if (parseScoreLeft === 1) {
 
     document.querySelector('.try-again').classList.add('show');
+    tryAgain.textContent = `The correct answer is ${ans}. Try again?`
     document.querySelector('.main__container').classList.add('blurred');
   }
 
@@ -105,7 +110,8 @@ submitButton.addEventListener("click", function (e) {
       document.querySelector('.main__container').classList.add('blurred');
       document.querySelector('.try-again').classList.add('show');
       document.querySelector('body').classList.add('win');
-      tryAgain.textContent = `Congratulations! The answer was ${ans}. Try again?`;
+      tryAgain.textContent = `Congratulations! The answer is ${ans}. Try again?`;
+      error.textContent = `Choose number from (1-10)`;
       return true;
     }
 });
